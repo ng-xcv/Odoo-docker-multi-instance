@@ -1,0 +1,22 @@
+version: "3"
+services:
+   odoo:
+      image: odoo:15.0
+      env_file: .env
+      depends_on:
+         - postgres
+      ports:
+         - "127.0.0.1:8074:8069"
+      volumes:
+         - data-example2:/var/lib/odoo
+   postgres:
+      image: postgres:13
+      env_file: .env
+      ports:
+         - "5444:5432"
+      volumes:
+         - db-example2:/var/lib/postgresql/data/pgdata
+
+volumes:
+   data-example2:
+   db-example2:
